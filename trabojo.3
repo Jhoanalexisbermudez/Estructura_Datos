@@ -1,0 +1,46 @@
+class LinkedListNode:
+    def __init__(self, value):
+        self.value = value  # Valor almacenado en el nodo
+        self.next = None  # Puntero al siguiente nodo en la lista
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None  # Cabeza de la lista
+
+    def append(self, value):
+        """Añadir un nodo al final de la lista."""
+        new_node = LinkedListNode(value)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+    def lookup(self, element_number):
+        """Buscar un nodo en una posición específica."""
+        current = self.head  # Apunta al primer nodo de la lista
+        count = 0  # Contador para llevar la cuenta de los nodos recorridos
+        
+        while count < element_number and current is not None:
+            current = current.next  # Avanzamos al siguiente nodo
+            count += 1
+
+        return current  # Retornamos el nodo encontrado o None si la posición no existe
+
+
+# Crear una lista enlazada con 5 elementos
+linked_list = LinkedList()
+for i in range(1, 6):  # Agregamos los valores del 1 al 5
+    linked_list.append(i)
+
+# Buscar el nodo en la posición 3 (cuenta desde 0, por lo que sería el cuarto nodo)
+position = 3
+node = linked_list.lookup(position)
+
+if node:
+    print(f"El nodo en la posición {position} tiene el valor: {node.value}")
+else:
+    print(f"No existe un nodo en la posición {position}.")
