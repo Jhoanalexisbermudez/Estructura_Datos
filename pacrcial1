@@ -1,0 +1,27 @@
+ubicaciones = ["Avenida Central", "Plaza Mayor", "Estación Norte", "Museo Nacional", "Universidad Central"]
+
+codigo = "408749" 
+
+ultimo_digito = int(codigo[-1])
+
+if ultimo_digito % 2 == 0:
+    ubicaciones_filtradas = [ubicaciones[i] for i in range(0, len(ubicaciones), 2)]  # Índices pares
+else:
+    ubicaciones_filtradas = [ubicaciones[i] for i in range(1, len(ubicaciones), 2)]  # Índices impares
+
+print("📍 Ruta con ubicaciones en índices pares:" if ultimo_digito % 2 == 0 else "📍 Ruta con ubicaciones en índices impares:")
+print("🚏 Ruta definida:")
+for lugar in ubicaciones_filtradas:
+    print(f"➡️ {lugar}")
+
+print("\n🛣️ Recorriendo ruta:")
+print("🚦 Iniciando recorrido...")
+for lugar in ubicaciones_filtradas:
+    print(f"🔴 Llegaste a: {lugar}")
+
+print("🏁 Fin del recorrido.")
+
+rama = f"BERMUDEZ-{codigo.upper()}"
+print(f"\nPara crear la rama en Git, usa:")
+print(f"git checkout -b {rama}")
+
